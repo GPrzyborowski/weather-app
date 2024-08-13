@@ -1,0 +1,120 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-size: 62.5%;
+  font-family: "Roboto", sans-serif;
+  background-color: #FBFBFB;
+}
+
+.wrapper {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.nav {
+  position: relative;
+  text-align: center;
+  line-height: 1.6em;
+  margin-top: 3.5em;
+}
+.nav__header {
+  display: inline-block;
+  color: #3B71CA;
+  font-size: 1.8rem;
+}
+.nav__header::first-letter {
+  text-transform: uppercase;
+}
+.nav__dark-mode {
+  position: absolute;
+  right: 2em;
+  border: none;
+  background: transparent;
+  cursor: pointer;
+}
+.nav .fa-moon {
+  font-size: 1.8rem;
+  color: #E4A11B;
+}
+
+.container {
+  margin-top: 10em;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.container__city {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.container__city label {
+  margin-bottom: 1em;
+}
+.container__city input {
+  padding: 1em;
+  outline: none;
+  border: 1px solid black;
+  border-radius: 8px;
+}
+.container__city input:focus {
+  border: 1px solid #3B71CA;
+}
+.container__city-label {
+  font-size: 1.6rem;
+}
+.container__submit {
+  margin-top: 5em;
+  width: 150px;
+  height: 50px;
+  background-color: #3B71CA;
+  outline: none;
+  border: none;
+  border-radius: 8px;
+  font-size: 1rem;
+  color: #FBFBFB;
+  transition: background-color 0.3s;
+}
+.container__submit::first-letter {
+  text-transform: uppercase;
+}
+.container__submit:hover {
+  background-color: #3275e0;
+  cursor: pointer;
+}
+
+.weather-info {
+  display: grid;
+  grid-template-rows: repeat(5, 1fr);
+  gap: 1em;
+  margin-top: 6em;
+  width: 100%;
+  height: 500px;
+  text-align: center;
+}
+.weather-info__type {
+  font-size: 1.2rem;
+}
+.weather-info__type::first-letter {
+  text-transform: uppercase;
+}
+.weather-info__icon {
+  background-color: #a5a3a3;
+}
+.weather-info__temperature {
+  background-color: #a5a3a3;
+}
+.weather-info__humidity {
+  background-color: #a5a3a3;
+}
+.weather-info__wind {
+  background-color: #a5a3a3;
+}
+.weather-info__clouds {
+  background-color: #a5a3a3;
+}/*# sourceMappingURL=main.css.map */

@@ -1,3 +1,7 @@
+const darkModeBtn = document.querySelector('.nav__dark-mode')
+const pageBody = document.querySelector('body')
+const cityLabel = document.querySelector('.container__city-label')
+const weatherInfoData = document.querySelectorAll('.weather-info__data')
 const input = document.querySelector('.container__city-input')
 const icon = document.querySelector('.weather-info__data--icon')
 const temperature = document.querySelector('.weather-info__data--temperature')
@@ -6,7 +10,7 @@ const wind = document.querySelector('.weather-info__data--wind')
 const clouds = document.querySelector('.weather-info__data--clouds')
 const submitBtn = document.querySelector('.container__submit')
 const API_LINK = 'https://api.openweathermap.org/data/2.5/weather?q='
-const API_KEY = '&appid=[yourApiKey]'
+const API_KEY = '&appid=[your_api_key]'
 const API_UNIT = '&units=metric'
 
 const city = 'new york'
@@ -31,4 +35,18 @@ const showWeather = () => {
 		.catch(err => console.error(err))
 }
 
+const changeMode = () => {
+	pageBody.classList.toggle('dark')
+	cityLabel.classList.toggle('dark-text')
+	for (item of weatherInfoData) {
+		item.classList.toggle('dark-text')
+	}
+	if (pageBody.classList.contains('dark')) {
+		darkModeBtn.innerHTML = '<i class="fa-solid fa-sun"></i>'
+	} else {
+		darkModeBtn.innerHTML = '<i class="fa-solid fa-moon"></i>'
+	}
+}
+
 submitBtn.addEventListener('click', showWeather)
+darkModeBtn.addEventListener('click', changeMode)

@@ -7,7 +7,8 @@
 body {
   font-size: 62.5%;
   font-family: "Roboto", sans-serif;
-  background-color: #FBFBFB;
+  background-color: #fbfbfb;
+  transition: background-color 0.3s;
 }
 
 .wrapper {
@@ -19,25 +20,32 @@ body {
 .nav {
   position: relative;
   text-align: center;
-  line-height: 1.6em;
   margin-top: 3.5em;
 }
 .nav__header {
+  margin-top: 0.5em;
   display: inline-block;
   color: #3B71CA;
   font-size: 1.8rem;
+  line-height: 100%;
 }
 .nav__header::first-letter {
   text-transform: uppercase;
 }
 .nav__dark-mode {
+  height: 100%;
   position: absolute;
   right: 2em;
+  padding: 1em;
   border: none;
   background: transparent;
   cursor: pointer;
+  transition: transform 0.3s;
 }
-.nav .fa-moon {
+.nav__dark-mode:hover {
+  transform: scale(1.3);
+}
+.nav .fa-moon, .nav .fa-sun {
   font-size: 1.8rem;
   color: #E4A11B;
 }
@@ -55,6 +63,7 @@ body {
 }
 .container__city-label {
   margin-bottom: 1em;
+  transition: color 0.3s;
 }
 .container__city-input {
   padding: 1em;
@@ -70,7 +79,7 @@ body {
 }
 .container__submit {
   margin-top: 3em;
-  width: 150px;
+  width: 170px;
   height: 50px;
   background-color: #3B71CA;
   outline: none;
@@ -100,6 +109,7 @@ body {
 .weather-info__type {
   font-size: 1.2rem;
   font-weight: bold;
+  color: #3B71CA;
 }
 .weather-info__type::first-letter {
   text-transform: uppercase;
@@ -107,4 +117,13 @@ body {
 .weather-info__data {
   margin: 3em 0 3em 0;
   font-size: 1.1rem;
+  transition: color 0.3s;
+}
+
+.dark {
+  background-color: #222222;
+}
+
+.dark-text {
+  color: #FBFBFB;
 }/*# sourceMappingURL=main.css.map */

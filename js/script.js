@@ -27,8 +27,9 @@ const showWeather = () => {
 			const hour = date.getUTCHours()
 			const minutes = date.getUTCMinutes()
 			const localTimezone = res.data.timezone / 3600
+			const localHour = (hour + localTimezone + 24) % 24
 
-			time.textContent = hour + localTimezone + ':' + minutes
+			time.textContent = localHour + ':' + minutes
 			temperature.textContent = Math.floor(res.data.main.temp) + '°C'
 			humidity.textContent = Math.floor(res.data.main.humidity) + '%'
 			wind.textContent = Math.floor(res.data.wind.speed) * 3.6 + ' km/h'

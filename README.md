@@ -1,6 +1,6 @@
 # A simple weather app.
 
-This project is basing on the https://openweathermap.org/ API.
+This project is based on the https://openweathermap.org/ API.
 
 
 ## Features

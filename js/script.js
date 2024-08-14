@@ -22,7 +22,7 @@ let URL
 
 const showWeather = () => {
 	const city = input.value
-	if(metricUnit.checked) {
+	if (metricUnit.checked) {
 		URL = API_LINK + city + API_KEY + API_UNIT_METRIC
 	} else {
 		URL = API_LINK + city + API_KEY + API_UNIT_IMPERIAL
@@ -38,18 +38,16 @@ const showWeather = () => {
 			const localTimezone = res.data.timezone / 3600
 			const localHour = (hour + localTimezone + 24) % 24
 			time.textContent = localHour + ':' + minutes
-			console.log(res);
-			if(metricUnit.checked) {
+
+			if (metricUnit.checked) {
 				temperature.textContent = Math.floor(res.data.main.temp) + '°C'
 				wind.textContent = Math.floor(res.data.wind.speed) * 3.6 + ' km/h'
 			} else {
 				temperature.textContent = Math.floor(res.data.main.temp) + '°F'
 				wind.textContent = res.data.wind.speed + ' mph'
-
 			}
-				humidity.textContent = Math.floor(res.data.main.humidity) + '%'
-				clouds.textContent = Math.floor(res.data.clouds.all) + '%'
-
+			humidity.textContent = Math.floor(res.data.main.humidity) + '%'
+			clouds.textContent = Math.floor(res.data.clouds.all) + '%'
 		})
 		.catch(err => console.error(err))
 

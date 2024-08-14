@@ -98,6 +98,23 @@ body {
 			cursor: pointer;
 		}
 	}
+	&__unit {
+		width: 175px;
+		margin-top: 2em;
+		display: flex;
+		justify-content: space-around;
+		font-size: 1.6em;
+		&--box {
+			display: flex;
+			flex-direction: column;
+			label {
+				margin-bottom: .5em;
+			}
+		}
+		&--heading {
+			transition: color .3s;
+		}
+	}
 }
 
 .d-none {

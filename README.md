@@ -7,12 +7,12 @@ This project is basing on the https://openweathermap.org/ API.
 
 - Live weather info basing on the provided city
 - Light / dark mode toggle
-- Responsive weather data display
+- Metric / Imperial units toggle
 - Local time based on the provided city
-
+- Responsive weather data display
 
 ## How to use?
 
 - Generate your API key [here](https://openweathermap.org/api)
-- Replace [your_api_key] in the script.js file (15th line) with the generated API key
+- Replace [your_api_key] in the script.js file (18th line) with the generated API key
 - Run index.html

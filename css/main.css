@@ -97,6 +97,23 @@ body {
   background-color: #3275e0;
   cursor: pointer;
 }
+.container__unit {
+  width: 175px;
+  margin-top: 2em;
+  display: flex;
+  justify-content: space-around;
+  font-size: 1.6em;
+}
+.container__unit--box {
+  display: flex;
+  flex-direction: column;
+}
+.container__unit--box label {
+  margin-bottom: 0.5em;
+}
+.container__unit--heading {
+  transition: color 0.3s;
+}
 
 .d-none {
   display: none;

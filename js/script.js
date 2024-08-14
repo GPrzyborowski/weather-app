@@ -11,13 +11,22 @@ const humidity = document.querySelector('.weather-info__data--humidity')
 const wind = document.querySelector('.weather-info__data--wind')
 const clouds = document.querySelector('.weather-info__data--clouds')
 const submitBtn = document.querySelector('.container__submit')
+const metricUnit = document.querySelector('.metric-unit')
+const imperialUnit = document.querySelector('.imperial-unit')
+const unitHeading = document.querySelectorAll('.container__unit--heading')
 const API_LINK = 'https://api.openweathermap.org/data/2.5/weather?q='
 const API_KEY = '&appid=[your_api_key]'
-const API_UNIT = '&units=metric'
+const API_UNIT_METRIC = '&units=metric'
+const API_UNIT_IMPERIAL = '&units=imperial'
+let URL
 
 const showWeather = () => {
 	const city = input.value
-	const URL = API_LINK + city + API_KEY + API_UNIT
+	if(metricUnit.checked) {
+		URL = API_LINK + city + API_KEY + API_UNIT_METRIC
+	} else {
+		URL = API_LINK + city + API_KEY + API_UNIT_IMPERIAL
+	}
 	axios
 		.get(URL)
 		.then(res => {
@@ -28,12 +37,19 @@ const showWeather = () => {
 			const minutes = date.getUTCMinutes()
 			const localTimezone = res.data.timezone / 3600
 			const localHour = (hour + localTimezone + 24) % 24
-
 			time.textContent = localHour + ':' + minutes
-			temperature.textContent = Math.floor(res.data.main.temp) + '°C'
-			humidity.textContent = Math.floor(res.data.main.humidity) + '%'
-			wind.textContent = Math.floor(res.data.wind.speed) * 3.6 + ' km/h'
-			clouds.textContent = Math.floor(res.data.clouds.all) + '%'
+			console.log(res);
+			if(metricUnit.checked) {
+				temperature.textContent = Math.floor(res.data.main.temp) + '°C'
+				wind.textContent = Math.floor(res.data.wind.speed) * 3.6 + ' km/h'
+			} else {
+				temperature.textContent = Math.floor(res.data.main.temp) + '°F'
+				wind.textContent = res.data.wind.speed + ' mph'
+
+			}
+				humidity.textContent = Math.floor(res.data.main.humidity) + '%'
+				clouds.textContent = Math.floor(res.data.clouds.all) + '%'
+
 		})
 		.catch(err => console.error(err))
 
@@ -44,6 +60,9 @@ const changeMode = () => {
 	pageBody.classList.toggle('dark')
 	cityLabel.classList.toggle('dark-text')
 	for (item of weatherInfoData) {
+		item.classList.toggle('dark-text')
+	}
+	for (item of unitHeading) {
 		item.classList.toggle('dark-text')
 	}
 	if (pageBody.classList.contains('dark')) {

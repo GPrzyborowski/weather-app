@@ -5,10 +5,9 @@ This project is based on the https://openweathermap.org/ API.
 
 ## Features
 
-- Live weather info basing on the provided city
+- Live weather info & local time based on the provided city
 - Light / dark mode toggle
 - Metric / Imperial units toggle
-- Local time based on the provided city
 - Responsive weather data display
 
 ## How to use?

@@ -2,6 +2,7 @@ const darkModeBtn = document.querySelector('.nav__dark-mode')
 const pageBody = document.querySelector('body')
 const cityLabel = document.querySelector('.container__city-label')
 const weatherInfoData = document.querySelectorAll('.weather-info__data')
+const infoBoxDisplay = document.querySelector('.info-box')
 const input = document.querySelector('.container__city-input')
 const icon = document.querySelector('.weather-info__data--icon')
 const temperature = document.querySelector('.weather-info__data--temperature')
@@ -13,7 +14,6 @@ const API_LINK = 'https://api.openweathermap.org/data/2.5/weather?q='
 const API_KEY = '&appid=[your_api_key]'
 const API_UNIT = '&units=metric'
 
-const city = 'new york'
 const URL = API_LINK + city + API_KEY + API_UNIT
 
 const showWeather = () => {
@@ -29,6 +29,8 @@ const showWeather = () => {
 			clouds.textContent = Math.floor(res.data.clouds.all) + '%'
 		})
 		.catch(err => console.error(err))
+
+		infoBoxDisplay.classList.remove('d-none')
 }
 
 const changeMode = () => {

@@ -5,6 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>How's the weather today?</title>
+    <link rel="icon" type="image/x-icon" href="/img/icons/favicon.svg">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
@@ -27,28 +28,34 @@
             </div>
             <button class="container__submit">check the weather</button>
         </div>
-        <div class="weather-info">
-            <div class="weather-info__icon">
-                <img class="weather-info__data weather-info__data--icon">
+        <div class="info-box d-none">
+            <div class="weather-info">
+                <div class="weather-info__icon">
+                    <img class="weather-info__data weather-info__data--icon">
+                </div>
+                <div class="weather-info__temperature">
+                    <p class="weather-info__type">temperature</p>
+                    <p class="weather-info__data weather-info__data--temperature"></p>
+                </div>
+                <div class="weather-info__humidity">
+                    <p class="weather-info__type">humidity</p>
+                    <p class="weather-info__data weather-info__data--humidity"></p>
+                </div>
+                <div class="weather-info__wind">
+                    <p class="weather-info__type">wind</p>
+                    <p class="weather-info__data weather-info__data--wind"></p>
+                </div>
+                <div class="weather-info__clouds">
+                    <p class="weather-info__type">clouds</p>
+                    <p class="weather-info__data weather-info__data--clouds"></p>
+                </div>
             </div>
-            <div class="weather-info__temperature">
-                <p class="weather-info__type">temperature</p>
-                <p class="weather-info__data weather-info__data--temperature"></p>
-            </div>
-            <div class="weather-info__humidity">
-                <p class="weather-info__type">humidity</p>
-                <p class="weather-info__data weather-info__data--humidity"></p>
-            </div>
-            <div class="weather-info__wind">
-                <p class="weather-info__type">wind</p>
-                <p class="weather-info__data weather-info__data--wind"></p>
-            </div>
-            <div class="weather-info__clouds">
-                <p class="weather-info__type">clouds</p>
-                <p class="weather-info__data weather-info__data--clouds"></p>
-            </div>
+
         </div>
+
     </div>
+
+
 
     <script src="https://unpkg.com/axios@1.6.7/dist/axios.min.js"></script>
     <script src="./js/script.js"></script>

@@ -10,7 +10,7 @@ body {
 	font-size: 62.5%;
 	font-family: 'Roboto', sans-serif;
 	background-color: #fbfbfb;
-	transition: background-color .3s;
+	transition: background-color 0.3s;
 }
 
 .wrapper {
@@ -24,7 +24,7 @@ body {
 	text-align: center;
 	margin-top: 3.5em;
 	&__header {
-		margin-top: .5em;
+		margin-top: 0.5em;
 		display: inline-block;
 		color: $primary;
 		font-size: 1.8rem;
@@ -41,12 +41,13 @@ body {
 		border: none;
 		background: transparent;
 		cursor: pointer;
-		transition: transform .3s;
+		transition: transform 0.3s;
 		&:hover {
 			transform: scale(1.3);
 		}
 	}
-	.fa-moon, .fa-sun {
+	.fa-moon,
+	.fa-sun {
 		font-size: 1.8rem;
 		color: $darkModeIcon;
 	}
@@ -63,7 +64,7 @@ body {
 		align-items: center;
 		&-label {
 			margin-bottom: 1em;
-			transition: color .3s;
+			transition: color 0.3s;
 		}
 		&-input {
 			padding: 1em;
@@ -99,6 +100,10 @@ body {
 	}
 }
 
+.d-none {
+	display: none;
+}
+
 .weather-info {
 	display: grid;
 	grid-template-rows: repeat(5, 1fr);
@@ -118,7 +123,7 @@ body {
 	&__data {
 		margin: 3em 0 3em 0;
 		font-size: 1.1rem;
-		transition: color .3s;
+		transition: color 0.3s;
 	}
 }
 
@@ -127,4 +132,48 @@ body {
 }
 .dark-text {
 	color: $white;
+}
+
+@media (min-width: 768px) {
+	.nav {
+		&__header {
+			font-size: 2rem;
+		}
+		.fa-moon,
+		.fa-sun {
+			font-size: 2rem;
+		}
+	}
+	.container {
+		&__city-label {
+			font-size: 1.8rem;
+		}
+	}
+	.weather-info {
+		grid-template-columns: repeat(2, 1fr);
+		grid-template-rows: auto;
+		&__type {
+			font-size: 1.5rem;
+		}
+		&__icon {
+			grid-column: 1 / 3;
+		}
+	}
+}
+
+@media (min-width: 1200px) {
+	.weather-info {
+		grid-template-columns: repeat(4, 1fr);
+		grid-template-rows: auto;
+		&__icon {
+			grid-column: 1 / 5;
+		}
+	}
+	.nav {
+		.fa-moon,
+		.fa-sun {
+			font-size: 2.2rem;
+		}
+	}
+
 }

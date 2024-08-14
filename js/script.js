@@ -15,10 +15,6 @@ const API_UNIT = '&units=metric'
 
 const city = 'new york'
 const URL = API_LINK + city + API_KEY + API_UNIT
-axios
-	.get(URL)
-	.then(res => console.log(res))
-	.catch(err => console.error(err))
 
 const showWeather = () => {
 	const city = input.value

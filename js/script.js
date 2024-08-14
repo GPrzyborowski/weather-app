@@ -5,6 +5,7 @@ const weatherInfoData = document.querySelectorAll('.weather-info__data')
 const infoBoxDisplay = document.querySelector('.info-box')
 const input = document.querySelector('.container__city-input')
 const icon = document.querySelector('.weather-info__data--icon')
+const time = document.querySelector('.weather-info__data--time')
 const temperature = document.querySelector('.weather-info__data--temperature')
 const humidity = document.querySelector('.weather-info__data--humidity')
 const wind = document.querySelector('.weather-info__data--wind')
@@ -14,8 +15,6 @@ const API_LINK = 'https://api.openweathermap.org/data/2.5/weather?q='
 const API_KEY = '&appid=[your_api_key]'
 const API_UNIT = '&units=metric'
 
-const URL = API_LINK + city + API_KEY + API_UNIT
-
 const showWeather = () => {
 	const city = input.value
 	const URL = API_LINK + city + API_KEY + API_UNIT
@@ -23,6 +22,13 @@ const showWeather = () => {
 		.get(URL)
 		.then(res => {
 			icon.setAttribute('src', 'https://openweathermap.org/img/wn/' + res.data.weather[0].icon + '@2x.png')
+
+			const date = new Date()
+			const hour = date.getUTCHours()
+			const minutes = date.getUTCMinutes()
+			const localTimezone = res.data.timezone / 3600
+
+			time.textContent = hour + localTimezone + ':' + minutes
 			temperature.textContent = Math.floor(res.data.main.temp) + '°C'
 			humidity.textContent = Math.floor(res.data.main.humidity) + '%'
 			wind.textContent = Math.floor(res.data.wind.speed) * 3.6 + ' km/h'
@@ -30,7 +36,7 @@ const showWeather = () => {
 		})
 		.catch(err => console.error(err))
 
-		infoBoxDisplay.classList.remove('d-none')
+	infoBoxDisplay.classList.remove('d-none')
 }
 
 const changeMode = () => {

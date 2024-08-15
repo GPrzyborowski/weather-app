@@ -70,5 +70,10 @@ const changeMode = () => {
 	}
 }
 
+input.addEventListener('keydown', e => {
+	if (e.key === 'Enter') {
+		showWeather()
+	}
+})
 submitBtn.addEventListener('click', showWeather)
 darkModeBtn.addEventListener('click', changeMode)

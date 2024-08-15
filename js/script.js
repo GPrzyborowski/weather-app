@@ -37,7 +37,16 @@ const showWeather = () => {
 			const minutes = date.getUTCMinutes()
 			const localTimezone = res.data.timezone / 3600
 			const localHour = (hour + localTimezone + 24) % 24
-			time.textContent = localHour + ':' + minutes
+
+			if (localHour < 10 && minutes < 10) {
+				time.textContent = `0${localHour}:0${minutes}`
+			} else if (localHour < 10 && minutes >= 10) {
+				time.textContent = `0${localHour}:${minutes}`
+			} else if (localHour >= 10 && minutes < 10) {
+				time.textContent = `${localHour}:0${minutes}`
+			} else {
+				time.textContent = `${localHour}:${minutes}`
+			}
 
 			if (metricUnit.checked) {
 				temperature.textContent = Math.floor(res.data.main.temp) + '°C'
@@ -75,5 +84,6 @@ input.addEventListener('keydown', e => {
 		showWeather()
 	}
 })
+
 submitBtn.addEventListener('click', showWeather)
 darkModeBtn.addEventListener('click', changeMode)

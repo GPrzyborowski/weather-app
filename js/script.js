@@ -21,48 +21,58 @@ const API_UNIT_IMPERIAL = '&units=imperial'
 let URL
 
 const showWeather = () => {
-	const city = input.value
-	cityLabel.textContent = `Showing the weather for ${city}`
-	if (metricUnit.checked) {
-		URL = API_LINK + city + API_KEY + API_UNIT_METRIC
+	if (input.value != '') {
+		if (input.classList.contains('empty-input')) {
+			input.classList.remove('empty-input')
+			input.removeAttribute('placeholder')
+		}
+		const city = input.value
+		cityLabel.textContent = `Showing the weather for ${city}`
+
+		if (metricUnit.checked) {
+			URL = API_LINK + city + API_KEY + API_UNIT_METRIC
+		} else {
+			URL = API_LINK + city + API_KEY + API_UNIT_IMPERIAL
+		}
+		axios
+			.get(URL)
+			.then(res => {
+				icon.setAttribute('src', 'https://openweathermap.org/img/wn/' + res.data.weather[0].icon + '@2x.png')
+
+				const date = new Date()
+				const hour = date.getUTCHours()
+				const minutes = date.getUTCMinutes()
+				const localTimezone = res.data.timezone / 3600
+				const localHour = (hour + localTimezone + 24) % 24
+
+				if (localHour < 10 && minutes < 10) {
+					time.textContent = `0${localHour}:0${minutes}`
+				} else if (localHour < 10 && minutes >= 10) {
+					time.textContent = `0${localHour}:${minutes}`
+				} else if (localHour >= 10 && minutes < 10) {
+					time.textContent = `${localHour}:0${minutes}`
+				} else {
+					time.textContent = `${localHour}:${minutes}`
+				}
+
+				if (metricUnit.checked) {
+					temperature.textContent = Math.floor(res.data.main.temp) + '°C'
+					wind.textContent = Math.floor(res.data.wind.speed) * 3.6 + ' km/h'
+				} else {
+					temperature.textContent = Math.floor(res.data.main.temp) + '°F'
+					wind.textContent = res.data.wind.speed + ' mph'
+				}
+				humidity.textContent = Math.floor(res.data.main.humidity) + '%'
+				clouds.textContent = Math.floor(res.data.clouds.all) + '%'
+			})
+			.catch(err => console.error(err))
+
+		input.value = ''
+		infoBoxDisplay.classList.remove('d-none')
 	} else {
-		URL = API_LINK + city + API_KEY + API_UNIT_IMPERIAL
+		input.classList.add('empty-input')
+		input.setAttribute('placeholder', 'Provide the city name')
 	}
-	axios
-		.get(URL)
-		.then(res => {
-			icon.setAttribute('src', 'https://openweathermap.org/img/wn/' + res.data.weather[0].icon + '@2x.png')
-
-			const date = new Date()
-			const hour = date.getUTCHours()
-			const minutes = date.getUTCMinutes()
-			const localTimezone = res.data.timezone / 3600
-			const localHour = (hour + localTimezone + 24) % 24
-
-			if (localHour < 10 && minutes < 10) {
-				time.textContent = `0${localHour}:0${minutes}`
-			} else if (localHour < 10 && minutes >= 10) {
-				time.textContent = `0${localHour}:${minutes}`
-			} else if (localHour >= 10 && minutes < 10) {
-				time.textContent = `${localHour}:0${minutes}`
-			} else {
-				time.textContent = `${localHour}:${minutes}`
-			}
-
-			if (metricUnit.checked) {
-				temperature.textContent = Math.floor(res.data.main.temp) + '°C'
-				wind.textContent = Math.floor(res.data.wind.speed) * 3.6 + ' km/h'
-			} else {
-				temperature.textContent = Math.floor(res.data.main.temp) + '°F'
-				wind.textContent = res.data.wind.speed + ' mph'
-			}
-			humidity.textContent = Math.floor(res.data.main.humidity) + '%'
-			clouds.textContent = Math.floor(res.data.clouds.all) + '%'
-		})
-		.catch(err => console.error(err))
-
-	input.value = ''
-	infoBoxDisplay.classList.remove('d-none')
 }
 
 const changeMode = () => {

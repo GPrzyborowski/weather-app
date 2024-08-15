@@ -74,6 +74,14 @@ body {
 .container__city-input:focus {
   border: 1px solid #3B71CA;
 }
+.container__city-input::-moz-placeholder {
+  text-align: center;
+  font-size: 1rem;
+}
+.container__city-input::placeholder {
+  text-align: center;
+  font-size: 1rem;
+}
 .container__city-label {
   font-size: 1.6rem;
 }
@@ -116,6 +124,10 @@ body {
 
 .d-none {
   display: none;
+}
+
+.empty-input {
+  border: 1px solid #dc4c64;
 }
 
 .weather-info {

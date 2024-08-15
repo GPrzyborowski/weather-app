@@ -73,6 +73,10 @@ body {
 			&:focus {
 				border: 1px solid $primary;
 			}
+			&::placeholder {
+				text-align: center;
+				font-size: 1rem;
+			}
 		}
 	}
 	&__city-label {
@@ -107,17 +111,21 @@ body {
 			display: flex;
 			flex-direction: column;
 			label {
-				margin-bottom: .5em;
+				margin-bottom: 0.5em;
 			}
 		}
 		&--heading {
-			transition: color .3s;
+			transition: color 0.3s;
 		}
 	}
 }
 
 .d-none {
 	display: none;
+}
+
+.empty-input {
+	border: 1px solid #dc4c64;
 }
 
 .weather-info {

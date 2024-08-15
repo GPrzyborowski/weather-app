@@ -1,8 +1,8 @@
 const darkModeBtn = document.querySelector('.nav__dark-mode')
 const pageBody = document.querySelector('body')
-const cityLabel = document.querySelector('.container__city-label')
 const weatherInfoData = document.querySelectorAll('.weather-info__data')
 const infoBoxDisplay = document.querySelector('.info-box')
+const cityLabel = document.querySelector('.container__city-label')
 const input = document.querySelector('.container__city-input')
 const icon = document.querySelector('.weather-info__data--icon')
 const time = document.querySelector('.weather-info__data--time')
@@ -22,6 +22,7 @@ let URL
 
 const showWeather = () => {
 	const city = input.value
+	cityLabel.textContent = `Showing the weather for ${city}`
 	if (metricUnit.checked) {
 		URL = API_LINK + city + API_KEY + API_UNIT_METRIC
 	} else {
@@ -60,6 +61,7 @@ const showWeather = () => {
 		})
 		.catch(err => console.error(err))
 
+	input.value = ''
 	infoBoxDisplay.classList.remove('d-none')
 }
 
@@ -84,6 +86,5 @@ input.addEventListener('keydown', e => {
 		showWeather()
 	}
 })
-
 submitBtn.addEventListener('click', showWeather)
 darkModeBtn.addEventListener('click', changeMode)
